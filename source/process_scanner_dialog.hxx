@@ -1,5 +1,5 @@
-#ifndef WINDOW_TREE_DIALOG_HXX
-#define WINDOW_TREE_DIALOG_HXX
+#ifndef PROCESS_SCANNER_DIALOG_HXX
+#define PROCESS_SCANNER_DIALOG_HXX
 
 #include <QtWidgets/QTreeWidget>
 #include <QtWidgets/QMessageBox>
@@ -29,24 +29,24 @@ signals:
     void treeSelectionMade(QString, HWND);
 
 private:
-    Ui::ProcessScannerDialog*    ui;
+    Ui::ProcessScannerDialog* ui;
 
-    QMenu*    treeWidgetContextMenu;
+    QMenu* treeWidgetContextMenu;
 
-    QTimer*     autoScannerTimer;
-    uint32_t    autoScannerInterval;            // The default auto-scan interval for the ProcessScanner QTimer.
+    QTimer*  autoScannerTimer;
+    uint32_t autoScannerInterval;     // The default auto-scan interval for the ProcessScanner QTimer.
 
-    bool    scannerCurrentlyScanning;       // True when ProcessScanner is scanning, false when not. Determined by start/finished signals.
+    bool scannerCurrentlyScanning;    // True when ProcessScanner is scanning, false when not. Determined by start/finished signals.
 
-    ProcessScanner                processScanner;                 // The ProcessScanner instance tasked with WinAPI process scanning.
-    ProcessScanner::SCAN_SCOPE    processScannerScope;            // The scope of the ProcessScanner instance (what to scan for).
-    QThread                       processScannerThread;           // The thread that the ProcessScanner instance will run on.
+    ProcessScanner             processScanner;                 // The ProcessScanner instance tasked with WinAPI process scanning.
+    ProcessScanner::SCAN_SCOPE processScannerScope;            // The scope of the ProcessScanner instance (what to scan for).
+    QThread                    processScannerThread;           // The thread that the ProcessScanner instance will run on.
 
-    QList<QTreeWidgetItem*>    rootItemRemovalWhitelist;
-    QList<QTreeWidgetItem*>    childItemRemovalWhitelist;
-    QList<QTreeWidgetItem*>    searchExpansions;
+    QList<QTreeWidgetItem*> rootItemRemovalWhitelist;
+    QList<QTreeWidgetItem*> childItemRemovalWhitelist;
+    QList<QTreeWidgetItem*> searchExpansions;
 
-    QMap<QString, HWND>        processWindowHandleMap;
+    QMap<QString, HWND> processWindowHandleMap;
 
     // Helper functions to collect QTreeWidgetItem*'s into QList's
     QList<QTreeWidgetItem*> collectTreeRoot(QTreeWidget*);
@@ -75,7 +75,6 @@ private slots:
 public:
     explicit ProcessScannerDialog(QWidget* parent, const ProcessScanner::SCAN_SCOPE& scan_scope);
     ~ProcessScannerDialog() override;
-
 };
 
 #endif // WINDOW_TREE_DIALOG_HXX
