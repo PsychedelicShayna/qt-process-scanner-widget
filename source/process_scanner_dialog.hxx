@@ -15,6 +15,8 @@
 
 #include "process_scanner.hpp"
 
+// Test modification; this is a test comment to see how Git merging will be handled.
+
 namespace Ui {
     class ProcessScannerDialog;
 }
